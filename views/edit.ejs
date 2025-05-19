@@ -1,0 +1,40 @@
+<%- include('partials/header', { title: 'Edit Proverb' }) %>
+
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Edit Proverb Details</h2>
+
+  <form method="POST" action="/proverbs/<%= proverb.id %>?_method=PUT" enctype="multipart/form-data" class="border p-4 rounded shadow-sm bg-light">
+
+    <div class="mb-3">
+      <label for="textDari" class="form-label">Dari</label>
+      <input type="text" id="textDari" name="textDari" value="<%= proverb.textDari %>" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="textPashto" class="form-label">Pashto</label>
+      <input type="text" id="textPashto" name="textPashto" value="<%= proverb.textPashto %>" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="translationEn" class="form-label">English Translation</label>
+      <input type="text" id="translationEn" name="translationEn" value="<%= proverb.translationEn %>" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="meaning" class="form-label">Meaning</label>
+      <input type="text" id="meaning" name="meaning" value="<%= proverb.meaning %>" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <input type="text" id="category" name="category" value="<%= proverb.category %>" class="form-control" required />
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <button type="submit" class="btn btn-success px-4">Update Proverb</button>
+      <a href="/proverbs/<%= proverb.id %>" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,26 @@
+<%- include('partials/header', { title: 'Proverb Details' }) %>
+
+<div class="container my-5">
+  <h2 class="mb-4 text-center">📜 Proverb Details</h2>
+
+  <div class="card shadow-sm p-4 bg-light">
+    <p><strong>ID:</strong> <%= proverbs.id %></p>
+    <p><strong>Dari:</strong> <%= proverbs.textDari %></p>
+    <p><strong>Pashto:</strong> <%= proverbs.textPashto %></p>
+    <p><strong>Translation:</strong> <%= proverbs.translationEn %></p>
+    <p><strong>Meaning:</strong> <%= proverbs.meaning %></p>
+    <p><strong>Category:</strong> <%= proverbs.category %></p>
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <a href="/proverbs/<%= proverbs.id %>/edit" class="btn btn-primary">🖊 Edit</a>
+
+      <form action="/proverbs/<%= proverbs.id %>?_method=DELETE" method="post" onsubmit="return confirm('Are you sure you want to permanently delete this proverb?')" class="d-inline">
+        <button type="submit" class="btn btn-danger">🗑 Delete</button>
+      </form>
+
+      <a href="/" class="btn btn-secondary">↩ Back</a>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

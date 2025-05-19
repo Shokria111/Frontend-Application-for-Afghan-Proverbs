@@ -1,0 +1,38 @@
+<%- include('partials/header', {title : 'Home'}) %>
+
+<div class="container my-5">
+  <h1 class="mb-4 text-center">All Proverbs</h1>
+
+  <% if(proverbs.length === 0) { %>
+    <div class="alert alert-warning text-center">No Proverbs available</div>
+  <% } else { %>
+    <div class="row">
+      <% proverbs.forEach(PV => { %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted">ID: <%= PV.id %></h6>
+              <p class="card-text"><strong>Dari:</strong> <%= PV.textDari %></p>
+              <p class="card-text"><strong>Pashto:</strong> <%= PV.textPashto %></p>
+              <p class="card-text"><strong>English:</strong> <%= PV.translationEn %></p>
+
+              <div class="d-flex flex-wrap justify-content-between mt-3">
+                <a href="/proverbs/<%= PV.id %>" class="btn btn-primary btn-sm mb-1">View Details</a>
+                <a href="/proverbs/<%= PV.id %>/edit" class="btn btn-warning btn-sm mb-1">Edit</a>
+                <form action="/proverbs/<%= PV.id %>?_method=DELETE" method="post" onsubmit="return confirm('Are you sure to delete it forever?')" class="mb-1">
+                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+
+  <div class="text-center mt-4">
+    <a href="/proverbs/new" class="btn btn-success">➕ Add New Proverb</a>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
